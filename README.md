@@ -1,11 +1,11 @@
 # Docker Piwik Container (zinway/piwik)
-_maintained by Zinway
+_maintained_ by Zinway
 
 ## What is it
 
 This Dockerfile (available as ___zinway/piwik___) gives you a completly secure piwik.
 
-It's based on the [nginx](https://registry.hub.docker.com/_/nginx/) Image
+It's based on the [centos:7](https://registry.hub.docker.com/_/centos/) Image
 
 ## Environment variables and defaults
 
