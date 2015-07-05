@@ -1,5 +1,5 @@
 # Docker Piwik Container (zinway/piwik)
-_maintained_ by Zinway
+_maintained by Zinway_
 
 ## What is it
 
