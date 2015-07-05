@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # init piwik
-[ -f /piwik/config/config.ini.php ] && /bin/bash /opt/init-piwik.sh
+[ `grep "; file automatically generated or modified by Piwik;" /piwik/config/config.ini.php | wc -l` -lt 1 ] && /bin/bash /opt/init-piwik.sh
 
 # Start supervisord and services
 supervisord -c /etc/supervisord.conf -n 
