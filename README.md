@@ -1,17 +1,11 @@
-# Docker Piwik Container (marvambass/piwik)
-_maintained by MarvAmBass_
-
-[FAQ - All you need to know about the marvambass Containers](https://marvin.im/docker-faq-all-you-need-to-know-about-the-marvambass-containers/)
+# Docker Piwik Container (zinway/piwik)
+_maintained by Zinway
 
 ## What is it
 
-This Dockerfile (available as ___marvambass/piwik___) gives you a completly secure piwik.
+This Dockerfile (available as ___zinway/piwik___) gives you a completly secure piwik.
 
-It's based on the [marvambass/nginx-ssl-php](https://registry.hub.docker.com/u/marvambass/nginx-ssl-php/) Image
-
-View in Docker Registry [marvambass/piwik](https://registry.hub.docker.com/u/marvambass/piwik/)
-
-View in GitHub [MarvAmBass/docker-piwik](https://github.com/MarvAmBass/docker-piwik)
+It's based on the [nginx](https://registry.hub.docker.com/_/nginx/) Image
 
 ## Environment variables and defaults
 
@@ -20,9 +14,9 @@ View in GitHub [MarvAmBass/docker-piwik](https://github.com/MarvAmBass/docker-pi
 Piwik Database Settings
 
 * __PIWIK\_MYSQL\_USER__
- * no default - if null it will start piwik in initial mode
+ * default: _piwik_
 * __PIWIK\_MYSQL\_PASSWORD__
- * no default - if null it will start piwik in initial mode
+ * default: _piwik_
 * __PIWIK\_MYSQL\_HOST__
  * default: _mysql_
 * __PIWIK\_MYSQL\_PORT__
@@ -52,7 +46,7 @@ Website to Track Settings
 * __SITE\_URL__
  * default: _http://localhost_
 * __SITE\_TIMEZONE__
- * default: _Europe/Berlin_
+ * default: _Asia/Shanghai_
 * __SITE\_ECOMMERCE__
  * __1__ or __0__ - default: _0_
 
@@ -67,23 +61,13 @@ Piwik Track Settings
 
 * __PIWIK\_RELATIVE\_URL\_ROOT__
  * default: _/piwik/_ - you can chance that to whatever you want/need
-* __PIWIK\_NOT\_BEHIND\_PROXY__
- * default: not set - if set to any value the settings to listen behind a reverse proxy server will be removed
-* __PIWIK\_HSTS\_HEADERS\_ENABLE__
- * default: not set - if set to any value the HTTP Strict Transport Security will be activated on SSL Channel
-* __PIWIK\_HSTS\_HEADERS\_ENABLE\_NO\_SUBDOMAINS__
- * default: not set - if set together with __PIWIK\_HSTS\_HEADERS\_ENABLE__ and set to any value the HTTP Strict Transport Security will be deactivated on subdomains
 
-### Inherited Variables
+## Using the zinway/piwik Container
 
-* __DH\_SIZE__
- * default: 2048 if you need more security just use a higher value
- * inherited from [MarvAmBass/docker-nginx-ssl-secure](https://github.com/MarvAmBass/docker-nginx-ssl-secure)
+First you need a running MySQL Container. 
 
-## Using the marvambass/piwik Container
+    docker run -d -e MYSQL_ROOT_PASSWORD=piwik -e MYSQL_USER=piwik -e MYSQL_PASSWORD=piwik -e MYSQL_DATABASE=piwik --name piwikdb mysql
 
-First you need a running MySQL Container (you could use: [marvambass/mysql](https://registry.hub.docker.com/u/marvambass/mysql/)).
+You need to _--link_ your mysql container to zinway/piwik with the name __mysql__
 
-You need to _--link_ your mysql container to marvambass/piwik with the name __mysql__
-
-    docker run -d -p 80:80 -p 443:443 --link mysql:mysql --name piwik marvambass/piwik
+    docker run -d -p 80:80 --link piwikdb:mysql --name piwik zinway/piwik
