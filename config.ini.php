@@ -1,6 +1,9 @@
 [General]
 enable_trusted_host_check = 0
 assume_secure_protocol = 0
+; Fix for nginx proxys or similar:
+;proxy_client_headers[] = HTTP_X_REAL_IP
+proxy_client_headers[] = HTTP_X_FORWARDED_FOR
 
 [database]
 host = PIWIK_MYSQL_HOST

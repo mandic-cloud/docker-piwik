@@ -16,7 +16,7 @@ RUN rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos
 # Install nginx, php-fpm and php extensions
 RUN yum install -y nginx
 RUN yum install -y php-fpm
-RUN yum install -y php-mysqlnd php-mysqli php-gd php-mcrypt php-zip php-xml php-iconv php-curl php-soap php-simplexml php-pdo php-dom php-cli
+RUN yum install -y php-mysqlnd php-mysqli php-gd php-mcrypt php-zip php-xml php-iconv php-curl php-soap php-simplexml php-pdo php-dom php-cli php-mbstring php-pecl-geoip php-devel GeoIP-devel
 
 # Clean up yum repos to save spaces
 RUN yum update -y && yum clean all
@@ -63,6 +63,10 @@ RUN curl -O "http://builds.piwik.org/piwik.zip"
 
 # unarchive piwik
 RUN unzip piwik.zip
+
+# add GeoIPCity support
+RUN echo "geoip.custom_directory=/piwik/misc" >> /etc/php.d/geoip.ini
+RUN curl -o - http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz | gzip -d - > /piwik/misc/GeoIPCity.dat
 
 # add piwik config
 ADD config.ini.php /piwik/config/config.ini.php
