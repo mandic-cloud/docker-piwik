@@ -1,6 +1,9 @@
 FROM centos:7
 MAINTAINER Zinway <z@zin.so>
 
+# change timezone for CST
+RUN ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+
 # disable delta RPMs
 RUN echo "deltarpm=0" >> /etc/yum.conf
 
