@@ -1,5 +1,5 @@
-# Docker Piwik Container (zinway/piwik)
-_maintained by Zinway_
+# Docker Piwik Container (mandic-cloud/piwik)
+_maintained by wagnerpinheiro_
 
 ## What is it
 
