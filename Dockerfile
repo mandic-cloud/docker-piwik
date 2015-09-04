@@ -8,7 +8,7 @@ RUN ln -snf /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
 RUN echo "deltarpm=0" >> /etc/yum.conf
 
 # Install tools
-RUN yum install -y yum-utils epel-release python-setuptools psmisc unzip 
+RUN yum install -y yum-utils epel-release python-setuptools psmisc unzip mysql
 
 #Install yum repos and utils
 RUN rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm  && \
