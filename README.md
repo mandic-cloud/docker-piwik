@@ -1,9 +1,9 @@
-# Docker Piwik Container (mandic-cloud/piwik)
+# Docker Piwik Container (wagnerpinheiro/piwik)
 _maintained by wagnerpinheiro_
 
 ## What is it
 
-This Dockerfile (available as ___zinway/piwik___) gives you a completly secure piwik.
+This Dockerfile (available as ___wagnerpinheiro/piwik___) gives you a completly secure piwik.
 
 It's based on the [centos:7](https://registry.hub.docker.com/_/centos/) Image
 
@@ -46,7 +46,7 @@ Website to Track Settings
 * __SITE\_URL__
  * default: _http://localhost_
 * __SITE\_TIMEZONE__
- * default: _Asia/Shanghai_
+ * default: _America/Sao_Paulo_
 * __SITE\_ECOMMERCE__
  * __1__ or __0__ - default: _0_
 
@@ -62,12 +62,12 @@ Piwik Track Settings
 * __PIWIK\_RELATIVE\_URL\_ROOT__
  * default: _/piwik/_ - you can chance that to whatever you want/need
 
-## Using the zinway/piwik Container
+## Using the wagnerpinheiro/piwik Container
 
 First you need a running MySQL Container. 
 
     docker run -d -e MYSQL_ROOT_PASSWORD=piwik -e MYSQL_USER=piwik -e MYSQL_PASSWORD=piwik -e MYSQL_DATABASE=piwik --name piwikdb mysql
 
-You need to _--link_ your mysql container to zinway/piwik with the name __mysql__
+You need to _--link_ your mysql container to wagnerpinheiro/piwik with the name __mysql__
 
-    docker run -d -p 80:80 --link piwikdb:mysql --name piwik zinway/piwik
+    docker run -d -p 80:80 --link piwikdb:mysql --name piwik wagnerpinheiro/piwik

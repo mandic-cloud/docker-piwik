@@ -2,7 +2,7 @@ FROM centos:7
 MAINTAINER wagnerpinheiro
 
 # change timezone for CST
-RUN ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+RUN ln -snf /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
 
 # disable delta RPMs
 RUN echo "deltarpm=0" >> /etc/yum.conf
@@ -30,7 +30,7 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log
 RUN ln -sf /dev/stderr /var/log/nginx/error.log
 
 # tweak php-fpm config
-RUN sed -i -e "s/;date.timezone =.*/date.timezone = Asia\/Shanghai/" /etc/php.ini
+RUN sed -i -e "s/;date.timezone =.*/date.timezone = America\/Sao_Paulo" /etc/php.ini
 RUN sed -i -e "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g" /etc/php.ini
 #RUN sed -i -e "s/upload_max_filesize\s*=\s*2M/upload_max_filesize = 100M/g" /etc/php.ini
 #RUN sed -i -e "s/post_max_size\s*=\s*8M/post_max_size = 100M/g" /etc/php.ini

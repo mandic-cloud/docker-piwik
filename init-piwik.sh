@@ -133,7 +133,7 @@ then
   
   if [ -z ${SITE_TIMEZONE+x} ]
   then
-    SITE_TIMEZONE="Asia/Shanghai"
+    SITE_TIMEZONE="America/Sao_Paulo"
   fi
   
   if [ -z ${SITE_ECOMMERCE+x} ]
