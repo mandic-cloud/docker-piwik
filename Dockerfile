@@ -17,7 +17,7 @@ RUN rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos
     yum-config-manager -q --enable remi-php55
 
 # Install nginx, php-fpm and php extensions
-RUN yum install -y nginx php-fpm php-mysqlnd php-mysqli php-gd php-mcrypt php-zip php-xml php-iconv php-curl php-soap php-simplexml php-pdo php-dom php-cli php-mbstring php-pecl-geoip php-devel GeoIP-devel
+RUN yum install -y nginx php-fpm php-mysqlnd php-mysqli php-gd php-mcrypt php-zidockp php-xml php-iconv php-curl php-soap php-simplexml php-pdo php-dom php-cli php-mbstring php-pecl-geoip php-devel GeoIP-devel
 
 # Clean up yum repos to save spaces
 RUN yum update -y && yum clean all
@@ -30,7 +30,7 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log
 RUN ln -sf /dev/stderr /var/log/nginx/error.log
 
 # tweak php-fpm config
-RUN sed -i -e "s/;date.timezone =.*/date.timezone = America\/Sao_Paulo" /etc/php.ini
+RUN sed -i -e "s/;date.timezone =.*/date.timezone = America\/Sao\_Paulo" /etc/php.ini
 RUN sed -i -e "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g" /etc/php.ini
 #RUN sed -i -e "s/upload_max_filesize\s*=\s*2M/upload_max_filesize = 100M/g" /etc/php.ini
 #RUN sed -i -e "s/post_max_size\s*=\s*8M/post_max_size = 100M/g" /etc/php.ini
