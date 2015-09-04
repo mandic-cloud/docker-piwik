@@ -58,8 +58,8 @@ fi
 #mkdir -p "/usr/share/nginx/$PIWIK_RELATIVE_URL_ROOT" 
 # adding softlink for nginx connection
 echo ">> adding softlink from /piwik to $PIWIK_RELATIVE_URL_ROOT"
-mkdir -p "/usr/share/nginx/html$PIWIK_RELATIVE_URL_ROOT"
-rm -rf "/usr/share/nginx/html$PIWIK_RELATIVE_URL_ROOT"
+# mkdir -p "/usr/share/nginx/html$PIWIK_RELATIVE_URL_ROOT"
+# rm -rf "/usr/share/nginx/html$PIWIK_RELATIVE_URL_ROOT"
 ln -s /piwik $(echo "/usr/share/nginx/html$PIWIK_RELATIVE_URL_ROOT" | sed 's/\/$//')
 
 

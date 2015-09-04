@@ -1,5 +1,5 @@
 FROM centos:7
-MAINTAINER Zinway <z@zin.so>
+MAINTAINER wagnerpinheiro
 
 # change timezone for CST
 RUN ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
@@ -8,7 +8,7 @@ RUN ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 RUN echo "deltarpm=0" >> /etc/yum.conf
 
 # Install tools
-RUN yum install -y yum-utils epel-release python-setuptools psmisc unzip mysql 
+RUN yum install -y yum-utils epel-release python-setuptools psmisc unzip 
 
 #Install yum repos and utils
 RUN rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm  && \
@@ -17,9 +17,7 @@ RUN rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos
     yum-config-manager -q --enable remi-php55
 
 # Install nginx, php-fpm and php extensions
-RUN yum install -y nginx
-RUN yum install -y php-fpm
-RUN yum install -y php-mysqlnd php-mysqli php-gd php-mcrypt php-zip php-xml php-iconv php-curl php-soap php-simplexml php-pdo php-dom php-cli php-mbstring php-pecl-geoip php-devel GeoIP-devel
+RUN yum install -y nginx php-fpm php-mysqlnd php-mysqli php-gd php-mcrypt php-zip php-xml php-iconv php-curl php-soap php-simplexml php-pdo php-dom php-cli php-mbstring php-pecl-geoip php-devel GeoIP-devel
 
 # Clean up yum repos to save spaces
 RUN yum update -y && yum clean all
